@@ -11,13 +11,19 @@ import (
 )
 
 func main() {
+	os.Exit(run())
+}
+
+func run() int {
 	email := os.Getenv("JOBCAN_EMAIL")
 	if len(email) == 0 {
-		panic("no JOBCAN_EMAIL specified")
+		log.Println("no JOBCAN_EMAIL specified")
+		return 1
 	}
 	password := os.Getenv("JOBCAN_PASSWORD")
 	if len(password) == 0 {
-		panic("no JOBCAN_PASSWORD specified")
+		log.Println("no JOBCAN_PASSWORD specified")
+		return 1
 	}
 
 	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
@@ -42,6 +48,9 @@ func main() {
 	}
 
 	if err := chromedp.Run(ctx, actions...); err != nil {
-		panic(err)
+		log.Println(err)
+		return 1
 	}
+	
+	return 0
 }
