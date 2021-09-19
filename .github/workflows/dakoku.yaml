@@ -1,0 +1,18 @@
+name: dakoku
+
+on:
+  workflow_dispatch:
+
+jobs:
+  dakoku:
+    name: dakoku
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.17.x
+      - name: Run
+        run: go run main.go
