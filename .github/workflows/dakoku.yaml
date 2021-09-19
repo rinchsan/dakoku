@@ -18,4 +18,6 @@ jobs:
         env:
           JOBCAN_EMAIL: serets.JOBCAN_EMAIL
           JOBCAN_PASSWORD: secrets.JOBCAN_PASSWORD
-        run: go run main.go
+        run: |
+          echo $JOBCAN_EMAIL
+          go run main.go
