@@ -16,8 +16,8 @@ jobs:
           go-version: 1.17.x
       - name: Run
         env:
-          JOBCAN_EMAIL: serets.JOBCAN_EMAIL
-          JOBCAN_PASSWORD: secrets.JOBCAN_PASSWORD
+          JOBCAN_EMAIL: ${{ serets.JOBCAN_EMAIL }}
+          JOBCAN_PASSWORD: ${{ secrets.JOBCAN_PASSWORD }}
         run: |
           echo $JOBCAN_EMAIL
           go run main.go
