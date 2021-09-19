@@ -18,4 +18,4 @@ jobs:
         env:
           JOBCAN_EMAIL: ${{ secrets.JOBCAN_EMAIL }}
           JOBCAN_PASSWORD: ${{ secrets.JOBCAN_PASSWORD }}
-        run: go run main.go
+        run: docker build -t dakoku . && docker run dakoku
