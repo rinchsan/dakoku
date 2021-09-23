@@ -11,9 +11,14 @@ jobs:
     name: dakoku
     runs-on: ubuntu-latest
     steps:
+      - name: Now
+        id: now
+        uses: 1466587594/get-current-time@v2.0.0
       - name: Checkout
+        if: ${{ !contains('3,4,5,6', steps.now.outputs.hour) }}
         uses: actions/checkout@v2
       - name: Run
+        if: ${{ !contains('3,4,5,6', steps.now.outputs.hour) }}
         env:
           JOBCAN_EMAIL: ${{ secrets.JOBCAN_EMAIL }}
           JOBCAN_PASSWORD: ${{ secrets.JOBCAN_PASSWORD }}
