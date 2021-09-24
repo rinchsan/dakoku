@@ -30,7 +30,7 @@ func run() int {
 	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer cancel()
 
-	ctx, cancel = context.WithTimeout(ctx, 30*time.Second)
+	ctx, cancel = context.WithTimeout(ctx, time.Minute)
 	defer cancel()
 
 	ctx, cancel = chromedp.NewContext(ctx)
