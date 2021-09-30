@@ -22,10 +22,6 @@ jobs:
         env:
           JOBCAN_EMAIL: ${{ secrets.JOBCAN_EMAIL }}
           JOBCAN_PASSWORD: ${{ secrets.JOBCAN_PASSWORD }}
-        uses: nick-invision/retry@v2
-        with:
-          timeout_minutes: 10
-          max_attempts: 3
-          command: |
-            docker build -t dakoku .
-            docker run -e JOBCAN_EMAIL -e JOBCAN_PASSWORD dakoku
+        run: |
+          docker build -t dakoku .
+          docker run -e JOBCAN_EMAIL -e JOBCAN_PASSWORD dakoku
