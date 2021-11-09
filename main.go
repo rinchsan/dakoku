@@ -38,20 +38,29 @@ func run() int {
 
 	actions := []chromedp.Action{
 		chromedp.Navigate("https://id.jobcan.jp/users/sign_in?app_key=atd&redirect_to=https://ssl.jobcan.jp/jbcoauth/callback"),
+		chromedp.Sleep(3 * time.Second),
 		chromedp.WaitVisible(`#new_user`, chromedp.ByID),
+		chromedp.Sleep(3 * time.Second),
 		chromedp.SendKeys(`#user_email`, email, chromedp.ByID),
+		chromedp.Sleep(3 * time.Second),
 		chromedp.SendKeys(`#user_password`, password, chromedp.ByID),
+		chromedp.Sleep(3 * time.Second),
 		chromedp.Submit(`#new_user`, chromedp.ByID),
+		chromedp.Sleep(3 * time.Second),
 		chromedp.WaitVisible(`#adit-button-push`, chromedp.ByID),
+		chromedp.Sleep(3 * time.Second),
 		chromedp.Click(`#adit-button-push`, chromedp.ByID),
+		chromedp.Sleep(3 * time.Second),
 		chromedp.WaitVisible(`#adit-button-wait`, chromedp.ByID),
+		chromedp.Sleep(3 * time.Second),
 		chromedp.WaitNotVisible(`#adit-button-wait`, chromedp.ByID),
+		chromedp.Sleep(3 * time.Second),
 	}
 
 	if err := chromedp.Run(ctx, actions...); err != nil {
 		log.Println(err)
 		return 1
 	}
-	
+
 	return 0
 }
