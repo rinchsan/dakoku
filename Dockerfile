@@ -1,4 +1,4 @@
-FROM golang:1.26.6 AS builder
+FROM golang:1.21.6 AS builder
 WORKDIR /go/src/github.com/rinchsan/dakoku
 COPY go.mod go.sum ./
 RUN go mod download
