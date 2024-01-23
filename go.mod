@@ -1,6 +1,6 @@
 module github.com/rinchsan/dakoku
 
-go 1.17
+go 1.21
 
 require github.com/chromedp/chromedp v0.6.10
 
